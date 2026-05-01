@@ -48,53 +48,54 @@ export default function Countdown() {
     setExpanded((prev) => ({ ...prev, [idx]: !prev[idx] }));
   };
 
-  useEffect(() => {
-    const formatDate = (date) => {
-      const day = String(date.getDate()).padStart(2, "0");
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      return `${day}/${month}`;
-    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+  const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    return `${day}/${month}`;
+  };
 
-    const calculateTimeRemaining = () => {
-      const now = new Date();
-      const remaining = {};
+  const calculateTimeRemaining = () => {
+    const now = new Date();
+    const remaining = {};
 
-      timelineSteps.forEach((step, index) => {
-        let status = "Chưa bắt đầu";
-        let days = 0,
-          hours = 0,
-          minutes = 0,
-          seconds = 0;
+    timelineSteps.forEach((step, index) => {
+      let status = "Chưa bắt đầu";
+      let days = 0,
+        hours = 0,
+        minutes = 0,
+        seconds = 0;
 
-        if (now > step.endDate) {
-          status = "Đã kết thúc";
-        } else if (now >= step.startDate) {
-          status = "Đang diễn ra";
-          const diff = step.endDate - now;
-          days = Math.floor(diff / (1000 * 60 * 60 * 24));
-          hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-          seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        }
+      if (now > step.endDate) {
+        status = "Đã kết thúc";
+      } else if (now >= step.startDate) {
+        status = "Đang diễn ra";
+        const diff = step.endDate - now;
+        days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      }
 
-        remaining[index] = {
-          days: String(days).padStart(2, "0"),
-          hours: String(hours).padStart(2, "0"),
-          minutes: String(minutes).padStart(2, "0"),
-          seconds: String(seconds).padStart(2, "0"),
-          status,
-          startDate: formatDate(step.startDate),
-          endDate: formatDate(step.endDate),
-        };
-      });
+      remaining[index] = {
+        days: String(days).padStart(2, "0"),
+        hours: String(hours).padStart(2, "0"),
+        minutes: String(minutes).padStart(2, "0"),
+        seconds: String(seconds).padStart(2, "0"),
+        status,
+        startDate: formatDate(step.startDate),
+        endDate: formatDate(step.endDate),
+      };
+    });
 
-      setTimeRemaining(remaining);
-    };
+    setTimeRemaining(remaining);
+  };
 
-    calculateTimeRemaining();
-    const timer = setInterval(calculateTimeRemaining, 1000);
-    return () => clearInterval(timer);
-  }, [timelineSteps]);
+  calculateTimeRemaining();
+  const timer = setInterval(calculateTimeRemaining, 1000);
+  return () => clearInterval(timer);
+}, []);
 
   return (
     <section className="timeline-section">
