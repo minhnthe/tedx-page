@@ -1,6 +1,45 @@
 import { useEffect, useState } from "react";
 import "../styles/Countdown.css";
 
+const timelineSteps = [
+  {
+    step: "01",
+    title: "Gửi ý tưởng",
+    description:
+      "Đây là vòng chấm điểm ý tưởng của thí sinh dưới dạng bài viết tiếng Việt và tiếng Anh. Thí sinh điền form đăng ký trước ngày 25/05/2026. Ngay sau khi nhận được ý tưởng BTC sẽ xác nhận thông tin tham gia. 01/06/2026: Công bố Top 50 thí sinh có ý tưởng tốt nhất sẽ vào Vòng 2.",
+    accent: "#b785ff",
+    startDate: new Date("2026-05-05"),
+    endDate: new Date("2026-05-25"),
+  },
+  {
+    step: "02",
+    title: "Quay video thuyết trình tại nhà",
+    description:
+      "Đây là vòng chấm điểm năng lực trình bày ý tưởng của thí sinh bằng khả năng thuyết trình. Thí sinh sẽ gửi video ghi hình bài nói cá nhân về cho BTC .Ban giám khảo sẽ tiến hành chấm bài nói và chọn ra 30 thí sinh có phần thể hiện tốt nhất. Danh sách Top 30 sẽ được công bố vào ngày 23/06/2026",
+    accent: "#c89cff",
+    startDate: new Date("2026-06-02"),
+    endDate: new Date("2026-06-22"),
+  },
+  {
+    step: "03",
+    title: "Vòng loại sân khấu",
+    description:
+      "Đây là vòng đánh giá khả năng diễn thuyết trên sân khấu của các thí sinh. Top 30 thí sinh có phần thể hiện xuất sắc nhất qua video sẽ tham gia vòng bình chọn “Diễn giả được yêu thích nhất” trên fanpage TEDx MocChau. BTC sẽ đăng tải các video của Top 30 để lấy bình chọn online. Top 30 thí sinh xuất sắc nhất Vòng 2 sẽ diễn thuyết trực tiếp trên sân khấu trước hội đồng Ban giám khảo.",
+    accent: "#e1a7c4",
+    startDate: new Date("2026-06-24"),
+    endDate: new Date("2026-08-03"),
+  },
+  {
+    step: "04",
+    title: "On stage",
+    description:
+      "Top 15 thí sinh có điểm cao nhất Vòng 3 chính thức trở thành diễn giả TEDx và tham gia thuyết trình trực tiếp trên sân khấu TEDx MocChau và sẽ được ghi hình trực tiếp sau đó gửi về TED để đăng tải lên kênh YouTube chính thức TEDx Talks với hơn 40 triệu người theo dõi toàn cầu. Profile của 15 diễn giả cũng sẽ được đăng tải lên trang sự kiện của TEDx MocChau",
+    accent: "#ffb8c2",
+    startDate: new Date("2026-08-04"),
+    endDate: new Date("2026-08-04"),
+  },
+];
+
 export default function Countdown() {
   const [timeRemaining, setTimeRemaining] = useState({});
   const [expanded, setExpanded] = useState({});
@@ -8,45 +47,6 @@ export default function Countdown() {
   const toggleDescription = (idx) => {
     setExpanded((prev) => ({ ...prev, [idx]: !prev[idx] }));
   };
-
-  const timelineSteps = [
-    {
-      step: "01",
-      title: "Gửi ý tưởng",
-      description:
-        "Đây là vòng chấm điểm ý tưởng của thí sinh dưới dạng bài viết tiếng Việt và tiếng Anh. Thí sinh điền form đăng ký trước ngày 25/05/2026. Ngay sau khi nhận được ý tưởng BTC sẽ xác nhận thông tin tham gia. 01/06/2026: Công bố Top 50 thí sinh có ý tưởng tốt nhất sẽ vào Vòng 2.",
-      accent: "#b785ff",
-      startDate: new Date("2026-05-05"),
-      endDate: new Date("2026-05-25"),
-    },
-    {
-      step: "02",
-      title: "Quay video thuyết trình tại nhà",
-      description:
-        "Đây là vòng chấm điểm năng lực trình bày ý tưởng của thí sinh bằng khả năng thuyết trình. Thí sinh sẽ gửi video ghi hình bài nói cá nhân về cho BTC .Ban giám khảo sẽ tiến hành chấm bài nói và chọn ra 30 thí sinh có phần thể hiện tốt nhất. Danh sách Top 30 sẽ được công bố vào ngày 23/06/2026",
-      accent: "#c89cff",
-      startDate: new Date("2026-06-02"),
-      endDate: new Date("2026-06-22"),
-    },
-    {
-      step: "03",
-      title: "Vòng loại sân khấu",
-      description:
-        "Đây là vòng đánh giá khả năng diễn thuyết trên sân khấu của các thí sinh. Top 30 thí sinh có phần thể hiện xuất sắc nhất qua video sẽ tham gia vòng bình chọn “Diễn giả được yêu thích nhất” trên fanpage TEDx MocChau. BTC sẽ đăng tải các video của Top 30 để lấy bình chọn online. Top 30 thí sinh xuất sắc nhất Vòng 2 sẽ diễn thuyết trực tiếp trên sân khấu trước hội đồng Ban giám khảo." ,
-      accent: "#e1a7c4",
-      startDate: new Date("2026-06-24"),
-      endDate: new Date("2026-08-03"),
-    },
-    {
-      step: "04",
-      title: "On stage",
-      description:
-        "Top 15 thí sinh có điểm cao nhất Vòng 3 chính thức trở thành diễn giả TEDx và tham gia thuyết trình trực tiếp trên sân khấu TEDx MocChau và sẽ được ghi hình trực tiếp sau đó gửi về TED để đăng tải lên kênh YouTube chính thức TEDx Talks với hơn 40 triệu người theo dõi toàn cầu. Profile của 15 diễn giả cũng sẽ được đăng tải lên trang sự kiện của TEDx MocChau",
-      accent: "#ffb8c2",
-      startDate: new Date("2026-08-04"),
-      endDate: new Date("2026-08-04"),
-    },
-  ];
 
   useEffect(() => {
     const formatDate = (date) => {
