@@ -1,0 +1,75 @@
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  z-index: 1000;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.topbar-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.topbar-brand {
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.topbar-right {
+  display: flex;
+  gap: 12px;
+}
+
+/* Nút Đăng ký */
+.btn-register {
+  background: linear-gradient(135deg, #ff3b30, #ff6a5f);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(255,59,48,0.4);
+}
+
+.btn-register:hover {
+  background: white;
+  color: #ff3b30;
+  transform: scale(1.05);
+}
+
+/* Nút Liên hệ */
+.btn-contact {
+  background: rgba(255,255,255,0.05);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(6px);
+}
+
+.btn-contact:hover {
+  background: white;
+  color: black;
+  border-color: white;
+  transform: scale(1.05);
+}
