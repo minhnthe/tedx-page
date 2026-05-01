@@ -94,7 +94,7 @@ export default function Countdown() {
     calculateTimeRemaining();
     const timer = setInterval(calculateTimeRemaining, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [timelineSteps]);
 
   return (
     <section className="timeline-section">
