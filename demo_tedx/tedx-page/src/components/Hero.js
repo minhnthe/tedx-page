@@ -1,15 +1,10 @@
-import { useCallback, useRef } from "react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import { useRef } from "react";
 import bg from "../Images/2d7cea4f-23d2-4d5d-a89e-f83c0b00f4a5.png";
 import "../styles/Hero.css";
 
 export default function Hero() {
   const heroRef = useRef(null);
 
-  const particlesInit = useCallback(async (engine) => {
-    await loadFull(engine);
-  }, []);
 
   const handleMouseMove = (event) => {
     if (!heroRef.current) return;
@@ -28,44 +23,6 @@ export default function Hero() {
       style={{ backgroundImage: `url(${bg})` }}
       onMouseMove={handleMouseMove}
     >
-      <Particles
-        id="tedx-particles"
-        className="hero-particles"
-        init={particlesInit}
-        options={{
-          fullScreen: { enable: false },
-          fpsLimit: 60,
-          background: { color: "transparent" },
-          particles: {
-            number: { value: 44, density: { enable: true, area: 900 } },
-            color: { value: ["#ff2a35", "#ffffff", "#ff9aa0"] },
-            links: {
-              enable: true,
-              distance: 140,
-              color: "#ff2a35",
-              opacity: 0.18,
-              width: 1,
-            },
-            move: {
-              enable: true,
-              speed: 0.7,
-              outModes: { default: "out" },
-            },
-            opacity: { value: { min: 0.15, max: 0.45 } },
-            size: { value: { min: 1, max: 3 } },
-          },
-          interactivity: {
-            events: {
-              onHover: { enable: true, mode: "repulse" },
-              resize: true,
-            },
-            modes: {
-              repulse: { distance: 90, duration: 0.35 },
-            },
-          },
-          detectRetina: true,
-        }}
-      />
       <div className="hero-floating hero-floating-one" aria-hidden="true" />
       <div className="hero-floating hero-floating-two" aria-hidden="true" />
       <div className="hero-mouse-glow" aria-hidden="true" />
