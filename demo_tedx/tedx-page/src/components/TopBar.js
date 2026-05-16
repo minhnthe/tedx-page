@@ -11,7 +11,14 @@ export default function TopBar() {
       </div>
 
       <div className="topbar-right">
-        <button className="btn btn-register">Đăng ký</button>
+        <a
+          className="btn btn-register"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdVcs96XFcuwuPRg6b1KFtf_YBe6WU7cLAmKaZrRlY_9U9-bg/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Đăng ký
+        </a>
         <button className="btn btn-contact">Liên hệ</button>
       </div>
     </header>

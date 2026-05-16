@@ -1,5 +1,5 @@
-import tedxImage from "../Images/2d7cea4f-23d2-4d5d-a89e-f83c0b00f4a5.png";
-import mocchauImage from "../Images/682137723_122097100304437311_6566578720841530717_n.jpg";
+import tedxImage from "../Images/tedx.jpg";
+import mocchauImage from "../Images/684908568_122099236730437311_4205379514210334134_n.jpg";
 import "../styles/About.css";
 
 export default function About() {

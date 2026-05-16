@@ -1,4 +1,4 @@
-import mocchauImage from "../Images/682137723_122097100304437311_6566578720841530717_n.jpg";
+import mocchauImage from "../Images/484559011_610455605323591_6519561237707008231_n.jpg";
 import "../styles/Speakers.css";
 
 const speakers = [
@@ -14,7 +14,8 @@ export default function Speakers() {
         <div className="featured-speakers-inner">
           <div className="featured-speakers-head">
             <p className="featured-speakers-kicker">Gương mặt tiêu biểu</p>
-            <h2 className="featured-speakers-title">TEDx MocChau</h2>
+            <h2 className="featured-speakers-title">Nguyễn Việt Dũng</h2>
+            <p className="featured-speakers-kicker">Thí sinh tham gia TEDxGreenwich University Hanoi 2025</p>
             <div className="featured-speakers-line" />
           </div>
 
@@ -31,7 +32,7 @@ export default function Speakers() {
       </section>
 
       <section style={styles.container}>
-      <h2>Ban giám khảo</h2>
+      <h2>Đại diện trung tâm anh ngữ Mộc Châu</h2>
 
       <div style={styles.grid}>
         {speakers.map((s, i) => (

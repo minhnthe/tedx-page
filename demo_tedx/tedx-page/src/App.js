@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Speakers from "./components/Speakers";
 import About from "./components/About";
 import Coundown from "./components/Countdown";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <About />
       <Speakers />
       <Coundown />
+      <Footer />
     </div>
   );
 }
