@@ -1,6 +1,6 @@
 .featured-speakers-section {
   padding: 96px 48px;
-  background: #ffffff;
+  background: #111111;
 }
 
 .featured-speakers-inner {
@@ -18,7 +18,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #ff1744;
+  color: #eb0028;
 }
 
 .featured-speakers-title {
@@ -26,13 +26,13 @@
   font-size: clamp(36px, 4vw, 54px);
   font-weight: 800;
   line-height: 1.1;
-  color: #111111;
+  color: #ffffff;
 }
 
 .featured-speakers-line {
   width: 60px;
   height: 4px;
-  background: #ff1744;
+  background: #eb0028;
   margin: 0;
 }
 
@@ -61,7 +61,8 @@
 
 .featured-speakers-content {
   padding: 40px 36px;
-  background: linear-gradient(135deg, #8b0000 0%, #b30000 100%);
+  background: linear-gradient(135deg, #1f1f1f 0%, #151515 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: #ffffff;
 }
@@ -79,7 +80,7 @@
   margin-bottom: 18px;
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.95);
+  color: #b3b3b3;
 }
 
 .featured-speakers-item:last-child {
@@ -91,7 +92,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #eb0028;
   margin-top: 7px;
 }
 
@@ -118,9 +119,17 @@
     padding: 60px 20px;
   }
 
+  .featured-speakers-head {
+    margin-bottom: 34px;
+  }
+
   .featured-speakers-container {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .featured-speakers-image {
+    max-width: 100%;
   }
 
   .featured-speakers-title {

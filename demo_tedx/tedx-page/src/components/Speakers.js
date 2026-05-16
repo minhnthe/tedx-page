@@ -1,67 +1,56 @@
 import mocchauImage from "../Images/484559011_610455605323591_6519561237707008231_n.jpg";
+import { motion } from "framer-motion";
 import "../styles/Speakers.css";
 
-const speakers = [
-  { name: "Speaker 1", img: "https://via.placeholder.com/200" },
-  { name: "Speaker 2", img: "https://via.placeholder.com/200" },
-  { name: "Speaker 3", img: "https://via.placeholder.com/200" },
-];
+const fadeUp = {
+  hidden: { opacity: 0, y: 34 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 
 export default function Speakers() {
   return (
     <>
-      <section className="featured-speakers-section">
+      <motion.section
+        className="featured-speakers-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.22 }}
+        variants={fadeUp}
+      >
         <div className="featured-speakers-inner">
-          <div className="featured-speakers-head">
+          <motion.div className="featured-speakers-head" variants={fadeUp}>
             <p className="featured-speakers-kicker">Gương mặt tiêu biểu</p>
             <h2 className="featured-speakers-title">Nguyễn Việt Dũng</h2>
             <p className="featured-speakers-kicker">Thí sinh tham gia TEDxGreenwich University Hanoi 2025</p>
             <div className="featured-speakers-line" />
-          </div>
+          </motion.div>
 
-          <div className="featured-speakers-container">
-            <div className="featured-speakers-image">
+          <motion.div className="featured-speakers-container" variants={fadeUp}>
+            <motion.div className="featured-speakers-image" variants={cardReveal}>
               <img src={mocchauImage} alt="TEDx MocChau Speaker" />
-            </div>
+            </motion.div>
 
-            <div className="featured-speakers-content">
+            <motion.div className="featured-speakers-content" variants={cardReveal}>
               Thông tin về bạn Dũng
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
-
-      <section style={styles.container}>
-      <h2>Đại diện trung tâm anh ngữ Mộc Châu</h2>
-
-      <div style={styles.grid}>
-        {speakers.map((s, i) => (
-          <div key={i} style={styles.card}>
-            <img src={s.img} alt="" style={styles.img} />
-            <h3>{s.name}</h3>
-          </div>
-        ))}
-      </div>
-      </section>
+      </motion.section>
     </>
   );
 }
-
-const styles = {
-  container: {
-    padding: "80px",
-    textAlign: "center",
-  },
-  grid: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "30px",
-  },
-  card: {
-    width: "200px",
-  },
-  img: {
-    width: "100%",
-    borderRadius: "10px",
-  },
-};

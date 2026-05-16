@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Outfit:wght@300;400;600&display=swap");
+
+:root {
+  --hero-red: #eb0028;
+  --hero-red-soft: #ff2f52;
+  --hero-white: #ffffff;
+  --hero-bg: #111111;
+  --hero-secondary: #b3b3b3;
+}
+
+.hero {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  min-height: 100vh;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(80% 45% at 78% 18%, rgba(229, 9, 20, 0.33), transparent 58%),
+    radial-gradient(45% 35% at 20% 76%, rgba(255, 61, 71, 0.25), transparent 70%),
+    linear-gradient(180deg, rgba(17,17,17,0.22) 0%, rgba(17,17,17,0.82) 52%, rgba(17,17,17,0.97) 100%);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  color: var(--hero-white);
+  font-family: "Outfit", sans-serif;
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-floating {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 2;
+  animation: heroFloat 9s ease-in-out infinite;
+}
+
+.hero-floating-one {
+  width: 300px;
+  height: 300px;
+  left: -80px;
+  top: 12%;
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.44) 0%, rgba(229, 9, 20, 0) 70%);
+}
+
+.hero-floating-two {
+  width: 380px;
+  height: 380px;
+  right: -120px;
+  bottom: -60px;
+  background: radial-gradient(circle, rgba(255, 133, 142, 0.38) 0%, rgba(255, 133, 142, 0) 72%);
+  animation-delay: -3.2s;
+}
+
+.hero-mouse-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  left: calc(var(--mouse-x) - 190px);
+  top: calc(var(--mouse-y) - 190px);
+  background: radial-gradient(circle, rgba(255, 34, 48, 0.28) 0%, rgba(255, 34, 48, 0) 68%);
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 3;
+  transition: left 120ms linear, top 120ms linear;
+}
+
+.hero-kicker {
+  margin: 0 0 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-title {
+  margin: 0;
+  max-width: 720px;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.6rem, 8vw, 5.6rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 0 12px rgba(229, 9, 20, 0.45),
+    0 0 34px rgba(229, 9, 20, 0.25),
+    0 7px 18px rgba(0, 0, 0, 0.55);
+}
+
+.hero-subtitle {
+  margin: 18px 0 30px;
+  max-width: 640px;
+  font-size: clamp(1rem, 2.2vw, 1.32rem);
+  line-height: 1.55;
+  color: var(--hero-secondary);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(120deg, var(--hero-red), var(--hero-red-soft));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.45);
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(229, 9, 20, 0.6);
+  filter: saturate(1.1);
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    min-height: 86vh;
+    padding: 132px 16px 56px;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 12vw, 3.1rem);
+    line-height: 1.03;
+  }
+
+  .hero-kicker {
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+  }
+
+  .hero-floating {
+    opacity: 0.35;
+    filter: blur(58px);
+  }
+
+  .hero-particles {
+    opacity: 0.65;
+  }
+
+  .hero-mouse-glow {
+    width: 240px;
+    height: 240px;
+    left: calc(var(--mouse-x) - 120px);
+    top: calc(var(--mouse-y) - 120px);
+  }
+}
+
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.06);
+  }
+}

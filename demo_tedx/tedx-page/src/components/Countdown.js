@@ -1,5 +1,28 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "../styles/Countdown.css";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const timelineItem = {
+  hidden: { opacity: 0, y: 48 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.08,
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
 
 const timelineSteps = [
   {
@@ -39,6 +62,27 @@ const timelineSteps = [
     endDate: new Date("2026-08-04"),
   },
 ];
+
+function FlipNumber({ value, label }) {
+  const [displayValue, setDisplayValue] = useState(value);
+  const [isFlipping, setIsFlipping] = useState(false);
+
+  useEffect(() => {
+    if (value === displayValue) return;
+
+    setDisplayValue(value);
+    setIsFlipping(true);
+    const timer = setTimeout(() => setIsFlipping(false), 480);
+    return () => clearTimeout(timer);
+  }, [value, displayValue]);
+
+  return (
+    <div className="countdown-block">
+      <div className={`countdown-number ${isFlipping ? "flip" : ""}`}>{displayValue}</div>
+      <div className="countdown-label">{label}</div>
+    </div>
+  );
+}
 
 export default function Countdown() {
   const [timeRemaining, setTimeRemaining] = useState({});
@@ -100,13 +144,28 @@ useEffect(() => {
   return (
     <section className="timeline-section">
       <div className="timeline-inner">
-        <div className="timeline-head">
+        <motion.div
+          className="timeline-head"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+        >
           <h2 className="timeline-title">Timeline TEDx MocChau</h2>
-        </div>
+        </motion.div>
 
         <div className="timeline-grid">
           {timelineSteps.map((step, index) => (
-            <div className="timeline-item" key={step.title} style={{ "--accent": step.accent }}>
+            <motion.div
+              className="timeline-item"
+              key={step.title}
+              style={{ "--accent": step.accent }}
+              custom={index}
+              variants={timelineItem}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+            >
               <div className="timeline-circle">
                 <span className="timeline-label">{step.step
           }</span>
@@ -137,22 +196,10 @@ useEffect(() => {
                     <span>{timeRemaining[index]?.endDate || "--/--"}</span>
                   </div>
                   <div className="timeline-countdown">
-                    <div className="countdown-block">
-                      <div className="countdown-number">{timeRemaining[index]?.days || "00"}</div>
-                      <div className="countdown-label">NGÀY</div>
-                    </div>
-                    <div className="countdown-block">
-                      <div className="countdown-number">{timeRemaining[index]?.hours || "00"}</div>
-                      <div className="countdown-label">GIỜ</div>
-                    </div>
-                    <div className="countdown-block">
-                      <div className="countdown-number">{timeRemaining[index]?.minutes || "00"}</div>
-                      <div className="countdown-label">PHÚT</div>
-                    </div>
-                    <div className="countdown-block">
-                      <div className="countdown-number">{timeRemaining[index]?.seconds || "00"}</div>
-                      <div className="countdown-label">GIÂY</div>
-                    </div>
+                    <FlipNumber value={timeRemaining[index]?.days || "00"} label="NGÀY" />
+                    <FlipNumber value={timeRemaining[index]?.hours || "00"} label="GIỜ" />
+                    <FlipNumber value={timeRemaining[index]?.minutes || "00"} label="PHÚT" />
+                    <FlipNumber value={timeRemaining[index]?.seconds || "00"} label="GIÂY" />
                   </div>
                   <span
                     className={`timeline-status ${
@@ -167,7 +214,7 @@ useEffect(() => {
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
