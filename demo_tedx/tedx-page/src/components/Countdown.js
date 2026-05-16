@@ -63,27 +63,6 @@ const timelineSteps = [
   },
 ];
 
-function FlipNumber({ value, label }) {
-  const [displayValue, setDisplayValue] = useState(value);
-  const [isFlipping, setIsFlipping] = useState(false);
-
-  useEffect(() => {
-    if (value === displayValue) return;
-
-    setDisplayValue(value);
-    setIsFlipping(true);
-    const timer = setTimeout(() => setIsFlipping(false), 480);
-    return () => clearTimeout(timer);
-  }, [value, displayValue]);
-
-  return (
-    <div className="countdown-block">
-      <div className={`countdown-number ${isFlipping ? "flip" : ""}`}>{displayValue}</div>
-      <div className="countdown-label">{label}</div>
-    </div>
-  );
-}
-
 export default function Countdown() {
   const [timeRemaining, setTimeRemaining] = useState({});
   const [expanded, setExpanded] = useState({});
@@ -196,10 +175,22 @@ useEffect(() => {
                     <span>{timeRemaining[index]?.endDate || "--/--"}</span>
                   </div>
                   <div className="timeline-countdown">
-                    <FlipNumber value={timeRemaining[index]?.days || "00"} label="NGÀY" />
-                    <FlipNumber value={timeRemaining[index]?.hours || "00"} label="GIỜ" />
-                    <FlipNumber value={timeRemaining[index]?.minutes || "00"} label="PHÚT" />
-                    <FlipNumber value={timeRemaining[index]?.seconds || "00"} label="GIÂY" />
+                    <div className="countdown-block">
+                      <div className="countdown-number">{timeRemaining[index]?.days || "00"}</div>
+                      <div className="countdown-label">NGÀY</div>
+                    </div>
+                    <div className="countdown-block">
+                      <div className="countdown-number">{timeRemaining[index]?.hours || "00"}</div>
+                      <div className="countdown-label">GIỜ</div>
+                    </div>
+                    <div className="countdown-block">
+                      <div className="countdown-number">{timeRemaining[index]?.minutes || "00"}</div>
+                      <div className="countdown-label">PHÚT</div>
+                    </div>
+                    <div className="countdown-block">
+                      <div className="countdown-number">{timeRemaining[index]?.seconds || "00"}</div>
+                      <div className="countdown-label">GIÂY</div>
+                    </div>
                   </div>
                   <span
                     className={`timeline-status ${
