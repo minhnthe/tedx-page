@@ -13,6 +13,7 @@
   --mouse-y: 50%;
   min-height: 100vh;
   position: relative;
+  background-color: #000; /* fallback behind image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,14 +21,14 @@
 }
 
 .hero::before {
+  /* dark cinematic overlay to prevent washed-out look */
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(80% 45% at 78% 18%, rgba(229, 9, 20, 0.33), transparent 58%),
-    radial-gradient(45% 35% at 20% 76%, rgba(255, 61, 71, 0.25), transparent 70%),
-    linear-gradient(180deg, rgba(17,17,17,0.22) 0%, rgba(17,17,17,0.82) 52%, rgba(17,17,17,0.97) 100%);
+  /* TEMP: remove overlay so background image is fully visible for debugging */
+  background: none;
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-overlay {
@@ -54,10 +55,10 @@
 .hero-floating {
   position: absolute;
   border-radius: 999px;
-  filter: blur(70px);
-  opacity: 0.6;
+  /* hide decorative floating glows so background is clear */
+  display: none;
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
   animation: heroFloat 9s ease-in-out infinite;
 }
 
@@ -84,8 +85,8 @@
   height: 380px;
   left: calc(var(--mouse-x) - 190px);
   top: calc(var(--mouse-y) - 190px);
-  background: radial-gradient(circle, rgba(255, 34, 48, 0.28) 0%, rgba(255, 34, 48, 0) 68%);
-  filter: blur(14px);
+  /* hide mouse glow for clarity */
+  display: none;
   pointer-events: none;
   z-index: 3;
   transition: left 120ms linear, top 120ms linear;

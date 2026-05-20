@@ -1,6 +1,8 @@
 import { useRef } from "react";
-import bg from "../Images/TEDx - Dung.png";
+// Use a known-working image for testing. If this shows, the PNG import/path is the issue.
+import bg from "../Images/img.jpg";
 import "../styles/Hero.css";
+
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -28,7 +30,7 @@ export default function Hero() {
       <div className="hero-mouse-glow" aria-hidden="true" />
       <div className="hero-overlay">
         <p className="hero-kicker">TEDx MocChau 2026</p>
-        <h1 className="hero-title">The journey of becoming who you are.</h1>
+        <h1 className="hero-title">Believe in your self</h1>
         <p className="hero-subtitle">
           Roots guide you - Roads shape you
         </p>
