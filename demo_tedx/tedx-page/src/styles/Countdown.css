@@ -1,7 +1,7 @@
 .timeline-section {
   position: relative;
   overflow: hidden;
-  padding: 96px 48px 110px;
+  padding: 96px 48px 40px;
   color: #ffffff;
   background:
     radial-gradient(circle at 18% 18%, rgba(235, 0, 40, 0.22), transparent 28%),

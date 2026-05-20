@@ -46,7 +46,9 @@ export default function Speakers() {
             </motion.div>
 
             <motion.div className="featured-speakers-content" variants={cardReveal}>
-              Thông tin về bạn Dũng
+              <p>Bạn Nguyễn Việt Dũng hiện nay là học sinh lớp 11 trường THPT Mộc Lỵ</p>
+              <p>Với thành tích xuất sắc bạn đã và đang là học viên ưu tú kiêm trợ giảng và là cộng tác viên chính thức của Trung tâm Anh ngữ Châu Mộc</p>
+              <p>Bằng sự tự tin cùng với suy nghĩ dám nghĩ dám làm thì bạn đã tham gia và là một trong những diễn giả TEDx chính thức tại TEDxGreenWich năm 2025</p>
             </motion.div>
           </motion.div>
         </div>
