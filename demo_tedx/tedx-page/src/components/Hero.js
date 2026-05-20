@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import bg from "../Images/2d7cea4f-23d2-4d5d-a89e-f83c0b00f4a5.png";
+import bg from "../Images/TEDx - Dung.png";
 import "../styles/Hero.css";
 
 export default function Hero() {
@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="hero-mouse-glow" aria-hidden="true" />
       <div className="hero-overlay">
         <p className="hero-kicker">TEDx MocChau 2026</p>
-        <h1 className="hero-title">Believe in your self</h1>
+        <h1 className="hero-title">The journey of becoming who you are.</h1>
         <p className="hero-subtitle">
           Roots guide you - Roads shape you
         </p>
